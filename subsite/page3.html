@@ -1,27 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Page 3</title>
     <link rel="stylesheet" href="./../style.css">
+  <title>Rock, Paper, Scissors</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial, sans-serif;
+    }
+    img {
+      width: 150px;
+      margin: 10px;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Page 3</h1>
-    </header>
-    <nav>
-        <ul>
-            <li><a href="page1.html">Go back to Page 1</a></li>
-            <li><a href="page2.html">Go back to Page 2</a></li>
-        </ul>
-    </nav>
-    <section>
-        <h2>Section 5</h2>
-        <p>This is the content of section 5.</p>
-        <img src="./../img/python.png" alt="Image 1">
-    </section>
-    <section>
-        <h2>Section 6</h2>
-        <p>This is the content of section 6.</p>
-    </section>
+  <h1>Rock, Paper, Scissors</h1>
+  <p>Select your move:</p>
+  <button onclick="play('rock')"><img src="rock.png" alt="Rock"></button>
+  <button onclick="play('paper')"><img src="paper.png" alt="Paper"></button>
+  <button onclick="play('scissors')"><img src="scissors.png" alt="Scissors"></button>
+  <p id="result"></p>
+
+  <script>
+    // Function to play the game
+    function play(playerChoice) {
+      const choices = ['rock', 'paper', 'scissors'];
+      const computerChoice = choices[Math.floor(Math.random() * 3)];
+      const result = document.getElementById('result');
+
+      if (playerChoice === computerChoice) {
+        result.textContent = "It's a tie!";
+      } else if (
+        (playerChoice === 'rock' && computerChoice === 'scissors') ||
+        (playerChoice === 'paper' && computerChoice === 'rock') ||
+        (playerChoice === 'scissors' && computerChoice === 'paper')
+      ) {
+        result.textContent = 'You win!';
+      } else {
+        result.textContent = 'You lose!';
+      }
+    }
+  </script>
 </body>
 </html>
